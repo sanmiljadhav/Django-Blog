@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Search Results{% endblock title %}
+{% block css %}
+<style>
+    .container{
+        min-height: 100vh;
+    }
+</style>
+{% endblock css %}
+
+{% block body %}
+<div class="container">
+   
+    <h2 class="my-3">Search Results are</h2>
+
+    {% for blog in searchedPosts %}
+    <div class="my-2">
+        <h3 class=""><a href="/blogpost/{{blog.slug}}" class="text-dark">{{blog.title}}</a></h3>
+        <div class="my-2">
+            {{blog.short_desc|slice:245}}...
+        </div>
+        <a href="/blogpost/{{blog.slug}}"><button class="btn btn-primary">Read More...</button></a>
+    </div>
+    {% endfor %}
+</div>
+
+
+    <br>
+{% endblock body %}
